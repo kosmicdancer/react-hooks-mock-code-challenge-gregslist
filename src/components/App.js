@@ -1,34 +1,20 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
 
 function App() {
-  const [listings, setListings] = useState([]);
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetch("http://localhost:6001/listings")
-      .then((r) => r.json())
-      .then(setListings);
-  }, []);
-
-  function handleRemoveListing(id) {
-    const newListings = listings.filter((listing) => listing.id !== id);
-    setListings(newListings);
-  }
-
-  const displayedListings = listings.filter((listing) =>
-    listing.description.toLowerCase().includes(search.toLowerCase())
-  );
+    const [search, setSearch] = useState("");
+  
+    function handleSearch(newSearch) {
+      setSearch(newSearch);
+    }
   
   return (
     <div className="app">
-      <Header onSearch={setSearch} />
-      <ListingsContainer
-      listings={displayedListings}
-        onRemoveListing={handleRemoveListing} />
+      <Header onSearch={handleSearch} />
+      <ListingsContainer search={search}/>
     </div>
   );
 }
 
-export default App;
+export default App
