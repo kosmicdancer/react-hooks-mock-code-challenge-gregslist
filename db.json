@@ -23,6 +23,12 @@
       "description": "Beautiful couch",
       "image": "./images/couch.jpg",
       "location": "Bay Ridge"
+    },
+    {
+      "description": "",
+      "image": "",
+      "location": "Hamilton, NJ",
+      "id": 7
     }
   ]
 }
